@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480">
+  <rect width="800" height="480" fill="#fffbeb"/>
+  <g transform="translate(120,90)">
+    <path d="M80 170 C140 120, 260 120, 320 170 C380 220, 320 260, 260 240 C200 220, 140 220, 80 170 Z" fill="#fb7185"/>
+    <circle cx="120" cy="150" r="10" fill="#fff"/>
+    <circle cx="124" cy="148" r="5" fill="#111827"/>
+  </g>
+  <text x="50%" y="85%" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#9f1239" text-anchor="middle">Crevette</text>
+</svg>

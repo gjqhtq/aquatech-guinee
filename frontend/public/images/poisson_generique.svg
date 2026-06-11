@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480">
+  <rect width="800" height="480" fill="#eef2ff"/>
+  <g transform="translate(120,90)">
+    <ellipse cx="260" cy="150" rx="200" ry="90" fill="#60a5fa"/>
+    <polygon points="460,150 520,130 520,170" fill="#60a5fa"/>
+    <circle cx="180" cy="130" r="18" fill="#fff"/>
+    <circle cx="184" cy="128" r="6" fill="#0f172a"/>
+  </g>
+  <text x="50%" y="85%" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#334155" text-anchor="middle">Poisson</text>
+</svg>
