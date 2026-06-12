@@ -23,7 +23,6 @@ const chatbotRoutes = require('./routes/chatbotRoutes');
 const { annulationAuto, alerteProduitNonVendu, alerteStockBas } = require('./cron/jobs');
 
 const app = express();
-// const server = http.createServer(app); // Not needed for Vercel
 
 // Middleware
 app.use(helmet());
@@ -40,8 +39,8 @@ if (process.env.NODE_ENV === 'production') {
   const frontendBuildPath = path.join(__dirname, '..', 'frontend', 'build');
   app.use(express.static(frontendBuildPath));
 
-  // Toutes les routes non-API renvoient vers index.html (pour React Router)
-  app.get('*', (req, res) => {
+  // CORRIGÉ : /{*path} remplace * (incompatible avec Express 5 / path-to-regexp v8+)
+  app.get('/{*path}', (req, res) => {
     if (!req.path.startsWith('/api/') && !req.path.startsWith('/api/uploads')) {
       res.sendFile(path.join(frontendBuildPath, 'index.html'));
     }
@@ -64,7 +63,7 @@ app.get('/', (req, res) => {
   res.json({ message: 'API AquaTech Guinee - Serveur en marche !', version: '2.0' });
 });
 
-// Démarrage uniquement si ce fichier est exécuté directement (pas lorsqu'importé par Vercel)
+// Démarrage uniquement si ce fichier est exécuté directement
 if (require.main === module) {
   const demarrer = async () => {
     await testConnexion();
