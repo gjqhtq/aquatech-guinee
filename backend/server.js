@@ -39,8 +39,8 @@ if (process.env.NODE_ENV === 'production') {
   const frontendBuildPath = path.join(__dirname, '..', 'frontend', 'build');
   app.use(express.static(frontendBuildPath));
 
-  // CORRIGÉ : /{*path} remplace * (incompatible avec Express 5 / path-to-regexp v8+)
-  app.get('/{*path}', (req, res) => {
+  // Catch-all pour le routing côté client (React Router)
+  app.get('*', (req, res) => {
     if (!req.path.startsWith('/api/') && !req.path.startsWith('/api/uploads')) {
       res.sendFile(path.join(frontendBuildPath, 'index.html'));
     }
