@@ -34,19 +34,6 @@ app.use(express.urlencoded({ extended: true }));
 // Fichiers statiques pour les photos de produits
 app.use('/api/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Servir les fichiers statiques du frontend React en production
-if (process.env.NODE_ENV === 'production') {
-  const frontendBuildPath = path.join(__dirname, '..', 'frontend', 'build');
-  app.use(express.static(frontendBuildPath));
-
-  // Catch-all pour le routing côté client (React Router)
-  app.get('/{*path}', (req, res) => {
-    if (!req.path.startsWith('/api/') && !req.path.startsWith('/api/uploads')) {
-      res.sendFile(path.join(frontendBuildPath, 'index.html'));
-    }
-  });
-}
-
 // Routes API
 app.use('/api/utilisateurs', utilisateurRoutes);
 app.use('/api/produits', produitRoutes);
