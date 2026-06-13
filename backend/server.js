@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(frontendBuildPath));
 
   // Catch-all pour le routing côté client (React Router)
-  app.get('/*', (req, res) => {
+  app.get('/{*path}', (req, res) => {
     if (!req.path.startsWith('/api/') && !req.path.startsWith('/api/uploads')) {
       res.sendFile(path.join(frontendBuildPath, 'index.html'));
     }
